@@ -2,17 +2,17 @@
 
 Tetris with typescript
 
-## Install
+### Install
 ```
 npm install
 ```
 
-Build docs/
+### Build `docs/`
 ```
 npm run build
 ```
 
-Start
+### Start server
 ```
 npm start
 ```
