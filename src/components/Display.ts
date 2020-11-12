@@ -14,6 +14,10 @@ export default class Display extends View {
     this.ctx = canvas.getContext("2d");
   }
 
+  public clearBoard = () => {
+    this.ctx.clearRect(0, 0, 500, 1000);
+  }
+
   public paintBoard = (board:any) => {
     for(let i=0; i<10; i++){
       for(let j=0; j<20; j++){

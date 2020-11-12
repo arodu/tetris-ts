@@ -25,13 +25,13 @@ export default class Board{
 
   public keepPiece = (piece:Piece) => {
     
-
+    
     return true;
   }
 
   public hasCollision = (piece:Piece):boolean => {
 
-    
+
     return false;
   }
 
