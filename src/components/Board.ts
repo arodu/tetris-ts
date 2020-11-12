@@ -1,16 +1,38 @@
-'use strict'
-import Game from './Game';
+'use strict';
+import Piece from './Piece';
+
 
 export default class Board{
-  game: Game;
+  private board:number[][] = [];
 
-  constructor(game: Game){
-    console.log("new board")
-    this.game = game;
+  constructor(){
+    this.init();
   }
 
-  test = () => {
-    console.log('test from board')
+  public init = () => {
+    this.board = new Array(10)
+    for(let i=0; i<10; i++){
+      this.board[i] = new Array(20)
+      for(let j=0; j<20; j++){
+        this.board[i][j] = 0;
+      }
+    }
+  }
+
+  public getBoard = () => {
+    return this.board;
+  }
+
+  public keepPiece = (piece:Piece) => {
+    
+
+    return true;
+  }
+
+  public hasCollision = (piece:Piece):boolean => {
+
+    
+    return false;
   }
 
 }

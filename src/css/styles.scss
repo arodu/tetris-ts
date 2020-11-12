@@ -1,4 +1,14 @@
 /* Este es el estilo del main */
 html, body {
-    background-color: gray;
+    background-color: white;
+}
+
+.container{
+  display: flex;
+}
+
+#display {
+  background-color: rgba(55,55,55,.5);
+  height: 90vh;
+  margin: 0 auto;
 }

@@ -1,7 +1,8 @@
 import "./css/styles.scss";
 import Game from "./components/Game";
 
-new Game();
+let game = new Game();
+game.start();
 
 //const mensaje = 'Hola Mundo! probando de nuevo';
 //
