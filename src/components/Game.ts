@@ -62,6 +62,12 @@ export default class Game{
     }
   }
 
+  public rotate = () => {
+    if( !this.board.hasCollision(this.currentPiece) ){
+      this.currentPiece.rotate();
+    }
+  }
+
   public actionListeners = () => {
 
     document.addEventListener('keydown', (event) => {
@@ -76,7 +82,7 @@ export default class Game{
           this.stepDown()
           break;
         case "ArrowUp":
-          this.currentPiece.rotate();
+          this.rotate();
           break;
       }
     })
