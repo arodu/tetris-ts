@@ -21,13 +21,18 @@ export default class Piece{
     return this;
   }
 
-  // direction = left|right
-  public rotate = (direction:string = 'left'):Piece => { 
-    if(direction == 'left'){
-      // rotate shape left
-    }else if(direction == 'right'){
-      // rotate shape right
+  public rotate = ():Piece => { 
+    
+    for(let j=0; j<this.shape.length; j++){
+      for(let i=0; i<j; i++){
+        [this.shape[i][j], this.shape[j][i]] = [this.shape[j][i], this.shape[i][j]];
+      }
     }
+
+    for(let i=0; i<this.shape.length; i++){
+      this.shape[i] = this.shape[i].reverse();
+    }
+
     return this;
   }
 

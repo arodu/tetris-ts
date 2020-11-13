@@ -44,11 +44,12 @@ export default class Display extends View {
     }
   }
 
-  private fillSquare = (posX:number, posY:number, fillColor = "tomato", borderColor="gray") => {
+  private fillSquare = (posX:number, posY:number, fillColor = "tomato", borderColor="#666666") => {
     this.ctx.beginPath();
     this.ctx.fillStyle = fillColor;
     this.ctx.fillRect(posX*50, posY*50, 50, 50);
     this.ctx.strokeStyle = borderColor;
+    this.ctx.lineWidth = 2;
     this.ctx.strokeRect(posX*50, posY*50, 50, 50);
     this.ctx.stroke();
   }
