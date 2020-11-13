@@ -7,7 +7,7 @@ export default class Game{
   private display: Display;
   private board: Board;
   private lastTime:number=0;
-  private dropInterval:number = 500;
+  private dropInterval:number = 4000;
   private dropCounter:number = 0;
 
   private currentPiece:Piece;
@@ -22,7 +22,7 @@ export default class Game{
 
   public start = () => {
     this.board.init()
-    this.currentPiece = Piece.newPiece().setPosX(4).setPosY(0);
+    this.currentPiece = Piece.newPiece().setPosX(0).setPosY(0);
 
     
     //this.currentPiece.setPosX(4).setPosY(-2);
@@ -36,7 +36,7 @@ export default class Game{
     this.lastTime = time;
     this.dropCounter += deltaTime;
     if(this.dropCounter > this.dropInterval){
-      this.stepDown();
+      //this.stepDown();
       this.dropCounter = 0;
     }
 

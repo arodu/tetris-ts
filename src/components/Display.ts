@@ -6,6 +6,7 @@ import Piece from './Piece';
 export default class Display extends View {
   private game: Game;
   private ctx: CanvasRenderingContext2D;
+  private debug:boolean = true;
 
   constructor(game: Game){
     super();
@@ -52,6 +53,13 @@ export default class Display extends View {
     this.ctx.lineWidth = 2;
     this.ctx.strokeRect(posX*50, posY*50, 50, 50);
     this.ctx.stroke();
+
+    if(this.debug){
+      this.ctx.fillStyle = "white";
+      this.ctx.font = "12px currier";
+      this.ctx.fillText(`${posX},${posY}`, (posX*50)+5, (posY*50)+15); 
+    }
+
   }
 
 }

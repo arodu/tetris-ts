@@ -45,13 +45,35 @@ export default class Board{
     const offsetX = piece.getPosX()+nextX;
     const offsetY = piece.getPosY()+nextY;
 
-    //console.table(this.board);
+    let boardWidth = this.board.length;
+    let boardBase = this.board[0].length;
+    
+    console.table(shape);
 
     for(let i=0; i<shape.length; i++){
       for(let j=0; j<shape[i].length; j++){
-        if( shape[i][j]!==0 && ( this.board[offsetX+i] && this.board[offsetX+j][offsetY+i] !== 0) ){
-          return true;
+        if( shape[i][j] > 0 ){
+          console.log(`${i},${j}`, offsetX+i)
+
+          //console.log();
+
+
+          //console.log();
+
+          //if(this.board[offsetX+i][offsetY+j]!==undefined && this.board[offsetX+i][offsetY+j] !== 0){
+          //  return true;
+          //}
+
+
+          //if(offsetX < 0 || offsetX+shape.length > boardWidth){
+          //  return true;
+          //}
         }
+
+
+        //if( shape[i][j]!==0 && ( this.board[offsetX+i] && this.board[offsetX+j][offsetY+i] !== 0) ){
+        //  return true;
+        //}
       }
     }
 
