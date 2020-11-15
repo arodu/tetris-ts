@@ -1,6 +1,6 @@
 /* Este es el estilo del main */
 html, body {
-    background-color: #cccccc;
+    background-color: #bbb;
 }
 
 .container{
@@ -11,4 +11,13 @@ html, body {
   background-color: rgba(55,55,55,.5);
   height: 90vh;
   margin: 0 auto;
+  
+  border: 3px solid #333;
+  border-radius: 4px;
+}
+
+#points {
+  position: fixed;
+  top: 4;
+  left: 4;
 }

@@ -6,7 +6,6 @@ import Piece from './Piece';
 export default class Display extends View {
   private game: Game;
   private ctx: CanvasRenderingContext2D;
-  private debug:boolean = true;
 
   constructor(game: Game){
     super();
@@ -17,6 +16,8 @@ export default class Display extends View {
 
   public clearBoard = () => {
     this.ctx.clearRect(0, 0, 500, 1000);
+
+    return this;
   }
 
   public paintBoard = (board:any) => {
@@ -25,6 +26,8 @@ export default class Display extends View {
         this.fillSquare(i, j, this.color(board[i][j]).blocked );
       }
     }
+
+    return this;
   }
 
   public paintPiece = (piece:Piece) => {
@@ -43,6 +46,8 @@ export default class Display extends View {
       }
       py++;
     }
+
+    return this;
   }
 
   private fillSquare = (posX:number, posY:number, fillColor = "tomato", borderColor="#666666") => {
@@ -50,16 +55,15 @@ export default class Display extends View {
     this.ctx.fillStyle = fillColor;
     this.ctx.fillRect(posX*50, posY*50, 50, 50);
     this.ctx.strokeStyle = borderColor;
-    this.ctx.lineWidth = 2;
+    this.ctx.lineWidth = 3;
     this.ctx.strokeRect(posX*50, posY*50, 50, 50);
     this.ctx.stroke();
 
-    if(this.debug){
+    if(this.game.debug){
       this.ctx.fillStyle = "white";
       this.ctx.font = "12px currier";
       this.ctx.fillText(`${posX},${posY}`, (posX*50)+5, (posY*50)+15); 
     }
-
   }
 
 }
