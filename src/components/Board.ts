@@ -76,12 +76,16 @@ export default class Board{
       for(let x=0; x < this.boardWidth; x++){
         if( this.board[x][y] == 0){
           successLine = false;
+          break;
         }
       }
       if(successLine){
         this.removeLines(y);
         y++;
         totalLines++;
+        if(totalLines >= 4){
+          break;
+        }
       }
     }
     
