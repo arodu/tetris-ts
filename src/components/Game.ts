@@ -19,6 +19,8 @@ export default class Game {
   public debug: boolean = false;
   private animationFrame: any = null;
 
+  private distance = 0;
+
   private level = 0;
 
   constructor() {
@@ -114,14 +116,28 @@ export default class Game {
     });
 
     var mc = new Hammer(window.document.body);
-    mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
-    mc.on("panleft panright panup pandown tap press", (ev) => {
+    mc.get("pan").set({ direction: Hammer.DIRECTION_ALL, threshold: 10 });
+    mc.on("panleft panright panup pandown tap press swipedown panend", (ev) => {
+      console.log(this.distance);
+      let sensitive = 3;
+
       switch (ev.type) {
         case "panleft":
-          this.moveX(-1);
+          this.distance++;
+          if (this.distance > sensitive) {
+            this.moveX(-1);
+            this.distance = 0;
+          }
           break;
         case "panright":
-          this.moveX(+1);
+          this.distance++;
+          if (this.distance > sensitive) {
+            this.moveX(+1);
+            this.distance = 0;
+          }
+          break;
+        case "panend":
+          //this.distance = 0;
           break;
         case "pandown":
           this.stepDown(false);
@@ -129,8 +145,8 @@ export default class Game {
         case "tap":
           this.rotate();
           break;
-        case "panup":
-          //this.stepDown(true);
+        case "swipedown":
+          this.stepDown(true);
           break;
       }
 
