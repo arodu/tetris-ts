@@ -130,7 +130,7 @@ export default class Game {
           this.rotate();
           break;
         case "panup":
-          this.stepDown(true);
+          //this.stepDown(true);
           break;
       }
 
