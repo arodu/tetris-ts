@@ -94,6 +94,16 @@ export default class Game {
     }
   };
 
+  private checkDistance = (callback: any) => {
+    this.distance++;
+    let sensitive = 2;
+    if (this.distance > sensitive) {
+      console.log(this.distance);
+      callback();
+      this.distance = 0;
+    }
+  };
+
   public actionListeners = () => {
     document.addEventListener("keydown", (event) => {
       switch (event.code) {
@@ -116,35 +126,38 @@ export default class Game {
     });
 
     var mc = new Hammer(window.document.body);
-    mc.get("pan").set({ direction: Hammer.DIRECTION_ALL, threshold: 10 });
-    mc.on("panleft panright panup pandown tap press swipedown panend", (ev) => {
-      console.log(this.distance);
-      let sensitive = 3;
+    mc.get("pan").set({ direction: Hammer.DIRECTION_ALL, threshold: 5 });
+    mc.get("swipe").set({ direction: Hammer.DIRECTION_VERTICAL });
+    //mc.on("panleft panright panup tap swipedown panend", (ev) => {
+    mc.on("panleft panright tap swipedown panend", (ev) => {
+      //console.log(this.distance);
+      //let sensitive = 3;
 
       switch (ev.type) {
         case "panleft":
-          this.distance++;
-          if (this.distance > sensitive) {
-            this.moveX(-1);
-            this.distance = 0;
-          }
+          this.checkDistance(() => this.moveX(-1));
           break;
+
         case "panright":
-          this.distance++;
-          if (this.distance > sensitive) {
-            this.moveX(+1);
-            this.distance = 0;
-          }
+          this.checkDistance(() => this.moveX(+1));
           break;
+
         case "panend":
-          //this.distance = 0;
+          this.distance = 0;
           break;
-        case "pandown":
-          this.stepDown(false);
+
+        //case "pandown":
+        //  this.stepDown(false);
+        //  break;
+
+        case "doubletap":
+          this.checkDistance(() => this.stepDown(false));
           break;
+
         case "tap":
           this.rotate();
           break;
+
         case "swipedown":
           this.stepDown(true);
           break;
