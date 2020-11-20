@@ -5,5 +5,6 @@
   "background_color": "#134d7c",
   "display": "standalone",
   "orientation": "portrait",
-  "scope": "/index.html"
+  "scope": "index.html",
+  "start_url": "index.html"
 }
