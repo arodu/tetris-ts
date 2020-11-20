@@ -1,0 +1,9 @@
+{
+  "name": "tetrisTS",
+  "short_name": "tetisTS",
+  "theme_color": "#4a99d7",
+  "background_color": "#134d7c",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/index.html"
+}

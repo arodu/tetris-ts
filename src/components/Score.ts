@@ -7,7 +7,6 @@ export default class Score {
   private lines: number = 0;
   private points: number = 0;
   private level: number = 0;
-  private levelLines: number = 0;
 
   private counterLines: any;
   private counterLevel: any;
@@ -34,16 +33,12 @@ export default class Score {
   };
 
   public chechLevel = () => {
-    if (this.levelLines >= 10) {
-      this.level++;
-      this.levelLines = 0;
-    }
+    this.level = Math.floor(this.lines / 10);
     this.counterLevel.innerHTML = this.level + 1;
   };
 
   public setLines = (successLines: number) => {
     this.lines += successLines;
-    this.levelLines += successLines;
     this.chechLevel();
     this.counterLines.innerHTML = this.lines;
   };
